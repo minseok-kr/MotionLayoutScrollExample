@@ -12,7 +12,8 @@ class MainActivity : AppCompatActivity() {
 
         // MotionLayout's progress is between 0F and 1F
         scrollView.viewTreeObserver.addOnScrollChangedListener {
-            layout.progress = scrollView.scrollY.toFloat() / scrollView.height
+            val realHeight = (scrollView.getChildAt(0).height) * scrollView.childCount
+            layout.progress = scrollView.scrollY.toFloat() / (realHeight - scrollView.height)
         }
     }
 }
